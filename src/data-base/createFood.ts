@@ -13,13 +13,13 @@ export async function createFoods() {
     const database = client.db("sample_mflix");
     const collection = database.collection("foods");
 
-    // await collection.insertOne({ name: "CURRY", rate: 10, price: "120$" });
+    await collection.insertOne({ name: "Egg", rate: 9, price: "2000" });
 
-    await collection.insertMany([
-      { name: "Pizza", rate: 5, price: "35k" },
-      { name: "Curry", rate: 9, price: "20K" },
-      { name: "Гуляш", rate: 9.1, price: "15k" },
-    ]);
+    // await collection.insertMany([
+    //   { name: "Pizza", rate: 5, price: "35k" },
+    //   { name: "Curry", rate: 9, price: "20K" },
+    //   { name: "Гуляш", rate: 9.1, price: "15k" },
+    // ]);
   } catch (error) {
     console.log("ERRORR", error);
   } finally {
