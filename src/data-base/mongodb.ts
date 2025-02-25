@@ -1,8 +1,10 @@
 import { MongoClient } from "mongodb";
 import { configDotenv } from "dotenv";
 configDotenv();
+
 const uri = process.env.MONGO_URL || "";
-console.log("URIOIII", uri);
+
+console.log("URI", uri);
 
 const client = new MongoClient(uri);
 
@@ -14,6 +16,7 @@ export async function run() {
     const findQuery = {
       year: { $gt: 2015 },
     };
+
     const movies = await collection.find().limit(2).toArray();
     return movies;
   } catch (error) {
