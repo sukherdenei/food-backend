@@ -4,6 +4,8 @@ import { run } from "./data-base/mongodb";
 import { createFoods } from "./data-base/createFood";
 import { school } from "./data-base/school";
 import { Search } from "./data-base/search";
+import { Edit } from "./data-base/editFoods";
+import { Delete } from "./data-base/deleteStudents";
 
 const app = express();
 
@@ -44,6 +46,24 @@ app.get("/search", async (req, res) => {
     res
       .status(200)
       .json({ massage: "Success", length: search?.length, data: search });
+  } catch (error) {
+    res.status(500).json({ message: "Error", error });
+  }
+});
+
+app.put("/search", async (req, res) => {
+  try {
+    await Edit();
+    res.status(200).json({ massage: "succesfull edit" });
+  } catch (error) {
+    res.status(500).json({ message: "Error", error });
+  }
+});
+
+app.delete("/search", async (req, res) => {
+  try {
+    await Delete();
+    res.status(200).json({ message: "Deleted" });
   } catch (error) {
     res.status(500).json({ message: "Error", error });
   }

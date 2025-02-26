@@ -1,14 +1,14 @@
 import { MongoClient } from "mongodb";
 import { configDotenv } from "dotenv";
+configDotenv();
+
+const uri = process.env.MONGO_URL || "";
+
+console.log("URI", uri);
+
+const client = new MongoClient(uri);
 
 export async function run() {
-  configDotenv();
-
-  const uri = process.env.MONGO_URL || "";
-
-  console.log("URI", uri);
-
-  const client = new MongoClient(uri);
   try {
     await client.connect();
     const database = client.db("sample_mflix");
