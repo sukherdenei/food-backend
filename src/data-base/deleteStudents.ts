@@ -10,7 +10,7 @@ export async function Delete() {
 
   try {
     await client.connect();
-    const database = client.db("School");
+    const database = await client.db("School");
     const collection = database.collection("Collection");
 
     await collection.deleteOne({ name: "Batzorig" });
