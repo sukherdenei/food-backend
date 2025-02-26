@@ -1,3 +1,4 @@
+// COMPARISON OPERATORS харьцуулах жиших
 import { MongoClient } from "mongodb";
 import { configDotenv } from "dotenv";
 
@@ -14,14 +15,20 @@ export async function Search() {
     const collection = database.collection("Collection");
 
     const search = collection
-      //   .find({ courses: { $eq: "Matematics" } })
+      // .find({ courses: { $eq: "Matematics" } })
       .find({
-        $and: [{ gpa: { $gt: 3 } }, { courses: { $ed: "Mathematics" } }],
+        $and: [{ gpa: { $gte: 3 } }, { courses: { $eq: "Computer Science" } }],
       })
-      //   .find({ gpa: { $gt: 3 } })
+      // .find({ gpa: { $gt: 3.5 } })
       .toArray();
     return search;
   } catch (error) {
     console.log("ERRORR", error);
   }
 }
+// $eq equal = тэнцүү
+// $gt greater than их
+// $gte greater than or equal их буюу тэнцүү
+// $lt less than
+// $lte less than or equal
+// $ne not equal
